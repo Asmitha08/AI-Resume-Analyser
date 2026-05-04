@@ -27,6 +27,21 @@ const upload = multer({ storage: multer.memoryStorage() });
 app.use(cors());
 app.use(express.json());
 
+// Wrapper for routes to handle /api prefix
+const router = express.Router();
+app.use('/api', router);
+app.use('/', router); // Also support root for local testing
+
+// Test Route
+router.get('/test-db', async (req, res) => {
+  try {
+    await prisma.$connect();
+    res.json({ status: 'connected', url: process.env.DATABASE_URL ? 'URL exists' : 'URL MISSING' });
+  } catch (error) {
+    res.status(500).json({ error: error.message, stack: error.stack });
+  }
+});
+
 // Authentication Middleware
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
@@ -41,7 +56,7 @@ const authenticateToken = (req, res, next) => {
 };
 
 // Auth Routes
-app.post('/auth/register', async (req, res) => {
+router.post('/auth/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
     const existingUser = await prisma.user.findUnique({ where: { email } });
@@ -61,7 +76,7 @@ app.post('/auth/register', async (req, res) => {
   }
 });
 
-app.post('/auth/login', async (req, res) => {
+router.post('/auth/login', async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await prisma.user.findUnique({ where: { email } });
@@ -80,7 +95,7 @@ app.post('/auth/login', async (req, res) => {
 });
 
 // Resume Analysis Route
-app.post('/analyze', authenticateToken, upload.single('resume'), async (req, res) => {
+router.post('/analyze', authenticateToken, upload.single('resume'), async (req, res) => {
   try {
     if (!req.file) return res.status(400).json({ error: 'No resume file uploaded' });
 
@@ -179,7 +194,7 @@ app.post('/analyze', authenticateToken, upload.single('resume'), async (req, res
 });
 
 // Analytics Dashboard Route
-app.get('/analytics', authenticateToken, async (req, res) => {
+router.get('/analytics', authenticateToken, async (req, res) => {
   try {
     const analyses = await prisma.resumeAnalysis.findMany({
       where: { userId: req.user.id },
