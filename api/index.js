@@ -40,7 +40,7 @@ const authenticateToken = (req, res, next) => {
 };
 
 // Auth Routes
-app.post('/api/auth/register', async (req, res) => {
+app.post('/auth/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
     const existingUser = await prisma.user.findUnique({ where: { email } });
@@ -60,7 +60,7 @@ app.post('/api/auth/register', async (req, res) => {
   }
 });
 
-app.post('/api/auth/login', async (req, res) => {
+app.post('/auth/login', async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await prisma.user.findUnique({ where: { email } });
@@ -79,7 +79,7 @@ app.post('/api/auth/login', async (req, res) => {
 });
 
 // Resume Analysis Route
-app.post('/api/analyze', authenticateToken, upload.single('resume'), async (req, res) => {
+app.post('/analyze', authenticateToken, upload.single('resume'), async (req, res) => {
   try {
     if (!req.file) return res.status(400).json({ error: 'No resume file uploaded' });
 
@@ -178,7 +178,7 @@ app.post('/api/analyze', authenticateToken, upload.single('resume'), async (req,
 });
 
 // Analytics Dashboard Route
-app.get('/api/analytics', authenticateToken, async (req, res) => {
+app.get('/analytics', authenticateToken, async (req, res) => {
   try {
     const analyses = await prisma.resumeAnalysis.findMany({
       where: { userId: req.user.id },
