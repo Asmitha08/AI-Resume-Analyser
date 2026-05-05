@@ -13,6 +13,7 @@ const { OpenAI } = require('openai');
 dotenv.config();
 
 const app = express();
+console.log('DIAGNOSTIC: DATABASE_URL exists?', !!process.env.DATABASE_URL);
 const prisma = new PrismaClient({
   datasources: {
     db: {
