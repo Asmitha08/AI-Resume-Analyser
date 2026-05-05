@@ -6,6 +6,13 @@
     "api"
   ],
   "scripts": {
-    "build": "npm run build --workspace=client && npm run generate --workspace=api"
+    "build": "npm run build --workspace=client",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.8.0"
+  },
+  "devDependencies": {
+    "prisma": "^7.8.0"
   }
 }
