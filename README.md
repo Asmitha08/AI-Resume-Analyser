@@ -1,57 +1,67 @@
-# 🧠 AI Resume Analyzer & ATS Optimizer
+# 🤖 AI Resume Analyzer
 
-A professional, full-stack AI-powered Resume Analyzer designed to help job seekers (especially interns and entry-level developers) optimize their resumes for Applicant Tracking Systems (ATS). Using OpenAI's GPT-4o, the app provides deep insights into how well a resume matches a specific job description.
+A powerful, full-stack AI application that analyzes resumes against job descriptions to provide a professional ATS (Applicant Tracking System) evaluation. 
 
-## 🚀 Key Features
+![Project Header](https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=1000)
 
-*   **📊 Advanced ATS Scoring**: Get an overall match percentage along with a detailed **Match Breakdown** (Skills, Experience, and Education scores).
-*   **👁️ Real-time PDF Preview**: Upload your resume and view it side-by-side with your analysis results instantly.
-*   **🧠 Deep AI Insights**: Categorized feedback identifying **Strengths**, **Improvements**, and **Actionable Suggestions**.
-*   **⚠️ Missing Keyword Detection**: Automatically identifies crucial keywords and skills missing from your resume that are required by the job description.
-*   **📈 Progress Tracking**: A visual dashboard showing your score progression over time and analytics on your top skills.
-*   **📄 Downloadable Reports**: Export your AI analysis into a professional, printable PDF report with one click.
-*   **✨ Modern Glassmorphism UI**: A sleek, responsive, and high-performance interface built with React and Vanilla CSS.
+## 🚀 Features
+
+- **AI Analysis**: Uses GPT-4o-mini to perform deep analysis on skills, experience, and education.
+- **ATS Scoring**: Provides a weighted ATS score based on technical recruiter criteria.
+- **Skill Gap Analysis**: Identifies missing keywords and suggests improvements.
+- **Analytics Dashboard**: Tracks your analysis history with interactive charts (Chart.js).
+- **Glassmorphism UI**: A premium, modern dark-mode interface.
+- **PDF Export**: Download your analysis report as a professional PDF.
+- **Secure Auth**: Full user registration and login system.
 
 ## 🛠️ Tech Stack
 
-*   **Frontend**: React.js, Vite, Chart.js, React Router
-*   **Backend**: Node.js, Express
-*   **Database**: PostgreSQL (via Prisma ORM)
-*   **AI Engine**: OpenAI API (GPT-3.5/GPT-4o)
-*   **Auth**: JSON Web Tokens (JWT) & Bcrypt
-*   **File Handling**: Multer & PDF-Parse
+- **Frontend**: React.js, Vite, Chart.js, Vanilla CSS (Glassmorphism).
+- **Backend**: Node.js, Express.js.
+- **Database**: PostgreSQL (Supabase).
+- **ORM/Client**: Standard `pg` client for maximum stability.
+- **AI**: OpenAI GPT-4o-mini API.
+- **Deployment**: Vercel.
 
-## ⚡ Quick Start
+## ⚙️ Setup Instructions
 
-### 1. Prerequisites
-*   Node.js installed
-*   PostgreSQL database running
-*   OpenAI API Key
+### Prerequisites
+- Node.js installed.
+- A Supabase account (PostgreSQL).
+- An OpenAI API Key.
 
-### 2. Backend Setup
-```bash
-cd server
-npm install
-# Create a .env file with:
-# PORT=5000
-# DATABASE_URL="postgresql://user:password@localhost:5432/db_name"
-# JWT_SECRET="your_secret_key"
-# OPENAI_API_KEY="your_openai_key"
-
-npx prisma db push
-npx prisma generate
-npm run dev
+### Environment Variables
+Create a `.env` file in the `api` directory:
+```env
+DATABASE_URL=your_postgresql_url
+JWT_SECRET=your_jwt_secret
+OPENAI_API_KEY=your_openai_api_key
 ```
 
-### 3. Frontend Setup
-```bash
-cd client
-npm install
-npm run dev
-```
+### Installation
+1. Clone the repository.
+2. Install dependencies at the root:
+   ```bash
+   npm install
+   ```
+3. Sync the database:
+   ```bash
+   npx prisma db push --schema=api/prisma/schema.prisma
+   ```
+4. Run locally:
+   ```bash
+   # Root
+   npm run dev
+   ```
 
-## 📸 Preview
-*(Tip: Add a screenshot of your Dashboard and Analysis page here to make your repo stand out!)*
+## 📦 Deployment
 
-## 📄 License
-This project is open-source and available under the [MIT License](LICENSE).
+This project is configured for one-click deployment on **Vercel**. 
+
+1. Push your code to GitHub.
+2. Import the project to Vercel.
+3. Add the Environment Variables in the Vercel Dashboard.
+4. Deploy!
+
+---
+Developed with ❤️ by Asmitha
