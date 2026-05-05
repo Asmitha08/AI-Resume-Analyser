@@ -18,16 +18,21 @@ const Register = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password }),
       });
-      const data = await res.json();
+      let data;
+      try {
+        data = await res.json();
+      } catch (e) {
+        throw new Error(`Server returned status ${res.status}`);
+      }
       
       if (res.ok) {
         login(data.token, data.user);
         navigate('/dashboard');
       } else {
-        setError(data.error);
+        setError(data.error || 'Registration failed');
       }
     } catch (err) {
-      setError('Something went wrong. Please try again.');
+      setError(err.message || 'Something went wrong. Please check Vercel Logs.');
     }
   };
 
