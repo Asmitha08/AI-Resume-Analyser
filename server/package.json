@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "node --watch index.js",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "generate": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^7.8.0",
