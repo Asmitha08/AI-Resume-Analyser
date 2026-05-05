@@ -46,8 +46,10 @@ app.post('/api/auth/register', async (req, res) => {
     });
 
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET || 'fallback_secret');
+    console.log('REGISTRATION SUCCESS:', user.email);
     res.json({ token, user: { id: user.id, name: user.name, email: user.email } });
   } catch (error) {
+    console.error('REGISTRATION ERROR:', error);
     res.status(500).json({ error: error.message });
   }
 });
@@ -62,8 +64,10 @@ app.post('/api/auth/login', async (req, res) => {
     if (!validPassword) return res.status(400).json({ error: 'Invalid credentials' });
 
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET || 'fallback_secret');
+    console.log('LOGIN SUCCESS:', user.email);
     res.json({ token, user: { id: user.id, name: user.name, email: user.email } });
   } catch (error) {
+    console.error('LOGIN ERROR:', error);
     res.status(500).json({ error: error.message });
   }
 });
