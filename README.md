@@ -1,67 +1,29 @@
-# 🤖 AI Resume Analyzer
+# AI Resume Analyzer
 
-A powerful, full-stack AI application that analyzes resumes against job descriptions to provide a professional ATS (Applicant Tracking System) evaluation. 
+An AI-powered application that evaluates resumes against job descriptions using OpenAI.
 
-![Project Header](https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=1000)
+## Features
+- AI Analysis: Deep analysis of skills and experience.
+- ATS Scoring: Weighted scoring based on recruiter criteria.
+- Dashboard: Track history and view detailed reports.
+- PDF Export: Download results as PDF.
 
-## 🚀 Features
+## Tech Stack
+- Frontend: React.js
+- Backend: Node.js (Express)
+- Database: PostgreSQL (Supabase)
+- AI: OpenAI API
 
-- **AI Analysis**: Uses GPT-4o-mini to perform deep analysis on skills, experience, and education.
-- **ATS Scoring**: Provides a weighted ATS score based on technical recruiter criteria.
-- **Skill Gap Analysis**: Identifies missing keywords and suggests improvements.
-- **Analytics Dashboard**: Tracks your analysis history with interactive charts (Chart.js).
-- **Glassmorphism UI**: A premium, modern dark-mode interface.
-- **PDF Export**: Download your analysis report as a professional PDF.
-- **Secure Auth**: Full user registration and login system.
+## Setup
+1. Clone the repo.
+2. Run "npm install" at the root.
+3. Create a .env file in the /api folder with:
+   DATABASE_URL=your_url
+   JWT_SECRET=your_secret
+   OPENAI_API_KEY=your_key
+4. Run "npm run dev" to start.
 
-## 🛠️ Tech Stack
+## Deployment
+Deployed on Vercel. Ensure environment variables are set in the Vercel dashboard.
 
-- **Frontend**: React.js, Vite, Chart.js, Vanilla CSS (Glassmorphism).
-- **Backend**: Node.js, Express.js.
-- **Database**: PostgreSQL (Supabase).
-- **ORM/Client**: Standard `pg` client for maximum stability.
-- **AI**: OpenAI GPT-4o-mini API.
-- **Deployment**: Vercel.
-
-## ⚙️ Setup Instructions
-
-### Prerequisites
-- Node.js installed.
-- A Supabase account (PostgreSQL).
-- An OpenAI API Key.
-
-### Environment Variables
-Create a `.env` file in the `api` directory:
-```env
-DATABASE_URL=your_postgresql_url
-JWT_SECRET=your_jwt_secret
-OPENAI_API_KEY=your_openai_api_key
-```
-
-### Installation
-1. Clone the repository.
-2. Install dependencies at the root:
-   ```bash
-   npm install
-   ```
-3. Sync the database:
-   ```bash
-   npx prisma db push --schema=api/prisma/schema.prisma
-   ```
-4. Run locally:
-   ```bash
-   # Root
-   npm run dev
-   ```
-
-## 📦 Deployment
-
-This project is configured for one-click deployment on **Vercel**. 
-
-1. Push your code to GitHub.
-2. Import the project to Vercel.
-3. Add the Environment Variables in the Vercel Dashboard.
-4. Deploy!
-
----
-Developed with ❤️ by Asmitha
+Developed by Asmitha
