@@ -1,4 +1,4 @@
-# AI Resume Analyzer <!-- Trigger Deployment -->
+# AI Resume Analyzer
 
 An AI-powered application that evaluates resumes against job descriptions using OpenAI.
 
