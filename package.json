@@ -6,7 +6,8 @@
     "api"
   ],
   "scripts": {
-    "build": "npm run build --workspace=client"
+    "build": "npm run build --workspace=client",
+    "install-all": "npm install && npm install --workspace=client && npm install --workspace=api"
   },
   "dependencies": {
   },
